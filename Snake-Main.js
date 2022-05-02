@@ -1,6 +1,6 @@
 //Ich und Luis machen es zusammen.
 
-Nur Feld:
+
 
 let felderProSeite, feldGroesse;
  
