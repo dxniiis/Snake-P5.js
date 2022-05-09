@@ -1,4 +1,4 @@
-let felderProSeite, feldGroesse, kopfX, kopfY, bewegungX, bewegungY, futterX, futterY;
+let felderProSeite, feldGroesse, kopfX, kopfY, bewegungX, bewegungY, futterX, futterY, koerperX, koerperY;
 
 function setup() {
 	felderProSeite = 15;
@@ -16,6 +16,9 @@ function setup() {
     futterY = 12 * feldGroesse;
     futterX = wuerfleFeldPosition();
     futterY = wuerfleFeldPosition();
+    koerperX = [4 * feldGroesse, 5 * feldGroesse, 6 * feldGroesse];
+    koerperY = [4 * feldGroesse, 4 * feldGroesse, 4 * feldGroesse];
+
 	
 }
 
@@ -35,7 +38,9 @@ function zeichneSpielfeld() {
 }
 
 function zeichneSchlange() {
-	// Schlangenkopf
+    for (let i = 0; i < koerperX.length; i = i + 1) {
+        zeichneFeld(koerperX[i], koerperY[i], "Brown");
+    }
 	zeichneFeld(kopfX, kopfY, "DarkOrchid");
 }
 
@@ -44,6 +49,12 @@ function zeichneFeld(x, y, farbe) {
 	rect(x, y, feldGroesse, feldGroesse);
 }
 function bewegeSchlange() {
+    if (bewegungX !== 0 || bewegungY !== 0) {
+        koerperX.unshift(kopfX);
+        koerperY.unshift(kopfY);
+        koerperX.pop(); 
+        koerperY.pop();
+    }
     kopfX = kopfX + bewegungX;
     kopfY = kopfY + bewegungY;
 }
