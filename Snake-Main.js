@@ -91,5 +91,7 @@ function pruefeFutter() {
     if (futterX === kopfX && futterY === kopfY) {
         futterX = wuerfleFeldPosition();
         futterY = wuerfleFeldPosition(); 
+          koerperX.push(koerperX[koerperX.length-1]);
+        koerperY.push(koerperY[koerperY.length-1]);
    }
 }
