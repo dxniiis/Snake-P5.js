@@ -25,10 +25,14 @@ function setup() {
 function draw() {
     bewegeSchlange();
     pruefeFutter();
-	zeichneSpielfeld();
-	zeichneFutter();
-	zeichneSchlange();
-	
+ 
+    if (hatKollidiert()) {
+        behandleKollision()
+    } else {
+        zeichneSpielfeld();
+        zeichneFutter();
+        zeichneSchlange();
+    }
 }
 
 function zeichneSpielfeld() {
@@ -94,4 +98,23 @@ function pruefeFutter() {
           koerperX.push(koerperX[koerperX.length-1]);
         koerperY.push(koerperY[koerperY.length-1]);
    }
+}
+function hatKollidiert() {
+    if (kopfX < 0) {
+        return true
+    }
+    if (kopfX > 270) {
+        return true
+    }
+    if (kopfY < 0) {
+        return true
+    }
+    if (kopfY > 270) {
+        return true
+    }
+ 
+   return false; 
+}
+function behandleKollision() {
+   console.log("⚠️ Kollision ⚠️");
 }
