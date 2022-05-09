@@ -1,4 +1,4 @@
-let felderProSeite, feldGroesse, kopfX, kopfY, bewegungX, bewegungY;
+let felderProSeite, feldGroesse, kopfX, kopfY, bewegungX, bewegungY, futterX, futterY;
 
 function setup() {
 	felderProSeite = 15;
@@ -12,12 +12,18 @@ function setup() {
     console.log('1. Ins Feld klicken');
     console.log('2. Mit Pfeiltasten steuern');
     console.log('3. Futter fressen');
+    futterX = 8 * feldGroesse;
+    futterY = 12 * feldGroesse;
+    futterX = wuerfleFeldPosition();
+    futterY = wuerfleFeldPosition();
 	
 }
 
 function draw() {
     bewegeSchlange();
+    pruefeFutter();
 	zeichneSpielfeld();
+	zeichneFutter();
 	zeichneSchlange();
 	
 }
@@ -62,4 +68,17 @@ function keyPressed() {
     }
     return false;
 }
-    
+function zeichneFutter() {
+    zeichneFeld(futterX, futterY, 'OrangeRed');
+}
+function wuerfleFeldPosition() {
+    let r = random(felderProSeite); 
+    r = floor(r); 
+    return r * feldGroesse; 
+}
+function pruefeFutter() {
+    if (futterX === kopfX && futterY === kopfY) {
+        futterX = wuerfleFeldPosition();
+        futterY = wuerfleFeldPosition(); 
+   }
+}
