@@ -103,18 +103,25 @@ function hatKollidiert() {
     if (kopfX < 0) {
         return true
     }
-    if (kopfX > 270) {
+    if (kopfX > width) {
         return true
     }
     if (kopfY < 0) {
         return true
     }
-    if (kopfY > 270) {
+    if (kopfY > height) {
         return true
     }
  
    return false; 
 }
+
 function behandleKollision() {
-   console.log("⚠️ Kollision ⚠️");
+    console.log("⚠️ Kollision ⚠️");
+    fill("red");
+    textAlign(CENTER);
+    textSize(48);
+    text("«Autsch!»", width / 2, height / 2);
+    frameRate(0); 
+    setTimeout(setup, 1500); 
 }
