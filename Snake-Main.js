@@ -1,4 +1,4 @@
-let felderProSeite, feldGroesse, kopfX, kopfY, bewegungX, bewegungY, futterX, futterY, koerperX, koerperY;
+let felderProSeite, feldGroesse, kopfX, kopfY, bewegungX, bewegungY, futterX, futterY, koerperX, koerperY, leben, gefressen;
 
 function setup() {
 	felderProSeite = 18; //war vorher 15
@@ -18,6 +18,8 @@ function setup() {
     futterY = wuerfleFeldPosition();
     koerperX = [4 * feldGroesse, 5 * feldGroesse, 6 * feldGroesse];
     koerperY = [4 * feldGroesse, 4 * feldGroesse, 4 * feldGroesse];
+    leben = 3;
+    gefressen = 2;
 
 	
 }
@@ -33,6 +35,14 @@ function draw() {
         zeichneFutter();
         zeichneSchlange();
     }
+     fill("#f8d429");
+    rect(0, 0, width, 30);
+    fill("black");
+    textSize(16);
+    textAlign(LEFT, CENTER);
+    text("🍎" + gefressen, 10, 15);
+    textAlign(RIGHT, CENTER);
+    text("❤️".repeat(leben), width-10, 15);
 }
 
 function zeichneSpielfeld() {
