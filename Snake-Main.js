@@ -1,8 +1,8 @@
 let felderProSeite, feldGroesse, kopfX, kopfY, bewegungX, bewegungY, futterX, futterY, koerperX, koerperY;
 
 function setup() {
-	felderProSeite = 15;
-	feldGroesse = 18;
+	felderProSeite = 18; //war vorher 15
+	feldGroesse = 15; //war vorher 18
 	createCanvas(felderProSeite * feldGroesse, felderProSeite * feldGroesse);
 	kopfX = 3 * feldGroesse;
 	kopfY = 4 * feldGroesse;
@@ -103,13 +103,13 @@ function hatKollidiert() {
     if (kopfX < 0) {
         return true
     }
-    if (kopfX > width) {
+    if (kopfX > width - feldGroesse) { //- feldGroesse hat gefehlt
         return true
     }
     if (kopfY < 0) {
         return true
     }
-    if (kopfY > height) {
+    if (kopfY > height - feldGroesse) { //- feldGroesse hat gefehlt
         return true
     }
  
