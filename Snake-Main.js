@@ -122,6 +122,7 @@ function hatKollidiert() {
     if (kopfY > height - feldGroesse) { //- feldGroesse hat gefehlt
         return true
     }
+   
  
    return false; 
 }
