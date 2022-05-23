@@ -3,15 +3,18 @@ let felderProSeite, feldGroesse, kopfX, kopfY, bewegungX, bewegungY, futterX, fu
 function setup() {
 	felderProSeite = 18; //war vorher 15
 	feldGroesse = 15; //war vorher 18
-	createCanvas(felderProSeite * feldGroesse, felderProSeite * feldGroesse);
+	createCanvas(felderProSeite * feldGroesse, felderProSeite * feldGroesse); //Feld erstellt
+	//Position des Schlangenkopfs
 	kopfX = 3 * feldGroesse;
 	kopfY = 4 * feldGroesse;
     bewegungX = 0;
     bewegungY = 0;
+	//Bilder die pro Sekunde angezeigt werden (FPS)
     frameRate(4);
     console.log('1. Ins Feld klicken');
     console.log('2. Mit Pfeiltasten steuern');
     console.log('3. Futter fressen');
+	
     futterX = 8 * feldGroesse;
     futterY = 12 * feldGroesse;
     futterX = wuerfleFeldPosition();
@@ -74,7 +77,7 @@ function bewegeSchlange() {
 }
 
 function keyPressed() {
-    
+    //Steuerung
     if (key == "ArrowRight"){  
         bewegungX = feldGroesse;
         bewegungY = 0;
@@ -116,7 +119,7 @@ function hatKollidiert() {
     if (kopfX > width - feldGroesse) { //- feldGroesse hat gefehlt
         return true
     }
-    if (kopfY < 0) {
+    if (kopfY < 30) {
         return true
     }
     if (kopfY > height - feldGroesse) { //- feldGroesse hat gefehlt
@@ -128,6 +131,7 @@ function hatKollidiert() {
 }
 
 function behandleKollision() {
+	//
     console.log("⚠️ Kollision ⚠️");
     fill("red");
     textAlign(CENTER);
