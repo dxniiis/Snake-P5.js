@@ -22,7 +22,7 @@ function setup() {
     koerperX = [4 * feldGroesse, 5 * feldGroesse, 6 * feldGroesse];
     koerperY = [4 * feldGroesse, 4 * feldGroesse, 4 * feldGroesse];
     leben = 3;
-    gefressen = 2;
+    gefressen = 0;
 
 	
 }
@@ -77,19 +77,19 @@ function bewegeSchlange() {
 
 function keyPressed() {
     //Steuerung
-    if (key == "ArrowRight"){  
+    if (key == "ArrowRight" && bewegungX !== -feldGroesse && bewegungX !== bewegungY){  
         bewegungX = feldGroesse;
         bewegungY = 0;
     }
-    if (key == "ArrowLeft") { 
+    if (key == "ArrowLeft" && bewegungX !== feldGroesse) { 
         bewegungX = -feldGroesse;
         bewegungY = 0;
     }
-    if (key == "ArrowDown") {
+    if (key == "ArrowDown" && bewegungY !== -feldGroesse) {
         bewegungX = 0 
         bewegungY = feldGroesse;
     }
-    if (key == "ArrowUp") {
+    if (key == "ArrowUp" && bewegungY !== feldGroesse) {
         bewegungX = 0 
         bewegungY = -feldGroesse
     }
