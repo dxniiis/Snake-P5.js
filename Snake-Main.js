@@ -44,8 +44,7 @@ function draw() {
     textSize(16);
     textAlign(LEFT, CENTER);
     text("🍎" + gefressen, 10, 15);
-    textAlign(RIGHT, CENTER);
-    text("❤️".repeat(leben), width-10, 15);
+    
 }
 
 function zeichneSpielfeld() {
@@ -112,6 +111,12 @@ function pruefeFutter() {
         koerperY.push(koerperY[koerperY.length-1]);
    }
 }
+function pruefeFutter2() {
+	if (futterY < 30) {
+		futterX = wuerfleFeldPosition();
+		futterY = wuerfleFeldPosition();
+	}
+}
 function hatKollidiert() {
     if (kopfX < 0) {
         return true
@@ -125,13 +130,21 @@ function hatKollidiert() {
     if (kopfY > height - feldGroesse) { //- feldGroesse hat gefehlt
         return true
     }
+    for (let i = 0; i < koerperX.length - 1; i++)
+	// alles im Array auser der Kopf
+	{
+		if (koerperX[i] === kopfX && koerperY[i] === kopfY) {
+			return true;
+			// wenn Kopf irgendwas im Array trifft
+		}
+	}
    
  
    return false; 
 }
 
 function behandleKollision() {
-	//
+	
     console.log("⚠️ Kollision ⚠️");
     fill("red");
     textAlign(CENTER);
