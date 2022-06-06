@@ -3,6 +3,7 @@ let felderProSeite, feldGroesse, kopfX, kopfY, bewegungX, bewegungY, futterX, fu
 function setup() {
 	felderProSeite = 18; //war vorher 15
 	feldGroesse = 15; //war vorher 18
+	spielstandanzeigeHoehe = 1.7;
 	createCanvas(felderProSeite * feldGroesse, felderProSeite * feldGroesse); //Feld erstellt
 	//Position des Schlangenkopfs
 	kopfX = 3 * feldGroesse;
@@ -22,6 +23,7 @@ function setup() {
 	koerperX = [4 * feldGroesse, 5 * feldGroesse, 6 * feldGroesse];
 	koerperY = [4 * feldGroesse, 4 * feldGroesse, 4 * feldGroesse];
 	leben = 3;
+	
 	gefressen = 1 - 1;
 	soundPowerup.volume = 0.3;
 
@@ -110,19 +112,25 @@ function wuerfleFeldPosition() {
 }
 
 function pruefeFutter() {
-    if (futterX === kopfX && futterY === kopfY) {
-        // Neues Futter platzieren
-        futterX = wuerfleFeldPosition();
-        futterY = wuerfleFeldPosition();
-        // Schlange wachsen lassen 
-        koerperX.push(koerperX[koerperX.length-1]);
-        koerperY.push(koerperY[koerperY.length-1]);
-    }
+	if (futterX === kopfX && futterY === kopfY) {
+		// Neues Futter platzieren
+		futterX = wuerfleFeldPosition();
+		futterY = wuerfleFeldPosition();
+		// Schlange wachsen lassen 
+		koerperX.push(koerperX[koerperX.length - 1]);
+		koerperY.push(koerperY[koerperY.length - 1]);
+	}
 }
 
 
 function pruefeFutter2() {
 	if (futterY < 50) {
+		futterX = wuerfleFeldPosition();
+		futterY = wuerfleFeldPosition();
+	}
+}
+function pruefeFutter3() {
+	if (futterY < spielstandanzeigeHoehe * feldGroesse) {
 		futterX = wuerfleFeldPosition();
 		futterY = wuerfleFeldPosition();
 	}
@@ -153,8 +161,9 @@ function hatKollidiert() {
 
 	return false;
 }
+
 function preload() {
-    soundPowerup = new Audio("https://exorciser.ch/_media/c/sounds/general/error9.wav")
+	soundPowerup = new Audio("https://exorciser.ch/_media/c/sounds/general/error9.wav")
 }
 //sound
 
