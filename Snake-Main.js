@@ -22,7 +22,7 @@ function setup() {
 	koerperX = [4 * feldGroesse, 5 * feldGroesse, 6 * feldGroesse];
 	koerperY = [4 * feldGroesse, 4 * feldGroesse, 4 * feldGroesse];
 	leben = 3;
-	gefressen = 1-1;
+	gefressen = 1 - 1;
 
 
 }
@@ -104,7 +104,7 @@ function zeichneFutter() {
 function wuerfleFeldPosition() {
 	let r = random(felderProSeite);
 	r = floor(r);
-	gefressen = gefressen +0.5;
+	gefressen = gefressen + 0.5;
 	return r * feldGroesse;
 }
 
@@ -160,4 +160,3 @@ function behandleKollision() {
 	frameRate(0);
 	setTimeout(setup, 1500);
 }
-
